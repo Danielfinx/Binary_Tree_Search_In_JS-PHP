@@ -13,8 +13,8 @@ function Node(key) {
   
   BinarySearchTree.prototype.findLargestSmallerKey = function(num) {
     // your code goes here
-    var current= this.root;
-    var result = -1;
+    let current= this.root;
+    let result = -1;
   
     while (current) {
       if (current.key < num) {         
@@ -29,7 +29,7 @@ function Node(key) {
   
   // Creates a new node by a key and inserts it to the BST
   BinarySearchTree.prototype.insert = function(key) {
-    var root = this.root;
+    let root = this.root;
   
     // 1. If the tree is empty, create the root
     if(!root) {
@@ -40,8 +40,8 @@ function Node(key) {
     // 2) Otherwise, create a node with the key
     //    and traverse down the tree to find where to
     //    to insert the new node
-    var currentNode = root;
-    var newNode = new Node(key);
+    let currentNode = root;
+    let newNode = new Node(key);
   
     while(currentNode !== null) {
         if(key < currentNode.key) {
@@ -69,7 +69,7 @@ function Node(key) {
    *********************************************/
   
   // Create a Binary Search Tree
-  var bst = new BinarySearchTree();
+  let bst = new BinarySearchTree();
   bst.insert(20);
   bst.insert(9);
   bst.insert(25);
@@ -78,7 +78,7 @@ function Node(key) {
   bst.insert(11);
   bst.insert(14);
   
-  var result = bst.findLargestSmallerKey(17);
+  let result = bst.findLargestSmallerKey(17);
   
   console.log("Largest smaller number is " + result);
   

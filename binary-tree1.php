@@ -1,0 +1,103 @@
+<?php
+    class Node {
+
+    public $info;
+    public $left;
+    public $right;
+    public $level;
+
+    public function __construct($info) {
+        $this->info = $info;
+        $this->left = NULL;
+        $this->right = NULL;
+        $this->level = NULL;
+    }
+
+    public function __toString() {
+        return "$this->info";
+    }
+    }
+
+    class SearchBinaryTree {
+
+    public $root;
+
+    public function findLargestSmallerKey($info) {
+        $current = $this->root;
+
+        if ($current == NULL) {
+            return -1;
+        }
+
+        while ($current != NULL) {
+            if ($current->info < $info) {
+                if ($current->right == NULL || $current->right->info > $info) {
+                    return $current->info;
+                } else {
+                    $current = $current->right;
+                }
+            } else if ($current->info >= $info) {
+                if ($current->left == NULL) {
+                    return -1;
+                } else {
+                    $current = $current->left;
+                }
+            }
+        }
+    }
+
+    public function  __construct() {
+            $this->root = NULL;
+    }
+
+    public function create($info) {
+
+            if($this->root == NULL) {
+
+            $this->root = new Node($info);
+
+            } else {
+
+            $current = $this->root;
+
+            while(true) {
+
+                if($info < $current->info) {
+
+                    if($current->left) {
+                        $current = $current->left;
+                    } else {
+                        $current->left = new Node($info);
+                        break; 
+                    }
+
+                } else if($info > $current->info){
+
+                    if($current->right) {
+                        $current = $current->right;
+                    } else {
+                        $current->right = new Node($info);
+                        break; 
+                    }
+
+                } else {
+
+                break;
+                }
+            } 
+        }
+    }
+    }
+
+    $arr = array(20,9,25,5,12,11,14);
+
+    $tree = new SearchBinaryTree();
+    $n=count($arr);
+    for($i=0;$i<$n;$i++) {
+    $tree->create($arr[$i]);
+    }
+
+    $result= $tree->findLargestSmallerKey(17);
+
+    echo ("Largest smaller number is ". $result);
+?>
